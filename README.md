@@ -41,6 +41,9 @@ Specifies the directory where Firefox is installed
 
 ### Unreleased
 
+* Fixed bug where Firefox cannot read files with UTF-16 LE encoding
+* Updated resource to create local-settings file instead of autoconfig
+
 ### 1.3.0.0
 
 * Update appveyor.yml to use the default template.
