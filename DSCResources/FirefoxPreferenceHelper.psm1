@@ -111,7 +111,7 @@ function Set-FirefoxPreconfiguration
         $InstallDirectory
     )
 
-    if (-not(Test-Path -Path "$InstallDirectory\defaults\pref\autoconfig.js"))
+    if (-not(Test-Path -Path "$InstallDirectory\defaults\pref\local-settings.js"))
     {
         New-Item -Path $autoConfigPath -Type File
     }
@@ -171,7 +171,7 @@ function Get-FirefoxPreference
         }
         'Autoconfig'
         {
-            $currentConfiguration = Get-Content "$InstallDirectory\defaults\pref\autoconfig.js" -ErrorAction SilentlyContinue
+            $currentConfiguration = Get-Content "$InstallDirectory\defaults\pref\local-settings.js" -ErrorAction SilentlyContinue
             break
         }
     }
@@ -396,14 +396,14 @@ function Set-FirefoxPreference
             $filePath = "$InstallDirectory\Mozilla.cfg"
             $fileContent = "\\Firefox preference file `n" + $preferences
 
-            Out-file -FilePath $filePath -InputObject $fileContent -Force -NoNewline
+            [System.IO.File]::WriteAllText($filePath, $fileContent, [System.Text.UTF8Encoding]::new($False))
             break
         }
         'Autoconfig'
         {
-            $filePath = "$InstallDirectory\defaults\pref\autoconfig.js"
+            $filePath = "$InstallDirectory\defaults\pref\local-settings.js"
 
-            Out-file -FilePath $filePath -InputObject $preferences -Force -NoNewline
+            [System.IO.File]::WriteAllText($filePath, $preferences, [System.Text.UTF8Encoding]::new($False))
             break
         }
     }
