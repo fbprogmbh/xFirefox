@@ -18,7 +18,7 @@ function Test-FirefoxPreconfiguration
     )
 
     $fileNameParam = @{
-        PreferenceType   = 'lockPref'
+        PreferenceType   = 'pref'
         PreferenceName   = 'general.config.filename'
         PreferenceValue  = 'Mozilla.cfg'
         InstallDirectory = $InstallDirectory
@@ -26,7 +26,7 @@ function Test-FirefoxPreconfiguration
     }
 
     $obscureValueParam = @{
-        PreferenceType   = 'lockPref'
+        PreferenceType   = 'pref'
         PreferenceName   = 'general.config.obscure_value'
         PreferenceValue  = '0'
         InstallDirectory = $InstallDirectory
@@ -120,11 +120,11 @@ function Set-FirefoxPreconfiguration
     {
         'filename'
         {
-            Set-FirefoxPreference -PreferenceType 'lockPref' -PreferenceName 'general.config.filename' -PreferenceValue 'Mozilla.cfg' -InstallDirectory $InstallDirectory -File 'Autoconfig'
+            Set-FirefoxPreference -PreferenceType 'pref' -PreferenceName 'general.config.filename' -PreferenceValue 'Mozilla.cfg' -InstallDirectory $InstallDirectory -File 'Autoconfig'
         }
         'obscurevalue'
         {
-            Set-FirefoxPreference -PreferenceType 'lockPref' -PreferenceName 'general.config.obscure_value' -PreferenceValue '0' -InstallDirectory $InstallDirectory -File 'Autoconfig'
+            Set-FirefoxPreference -PreferenceType 'pref' -PreferenceName 'general.config.obscure_value' -PreferenceValue '0' -InstallDirectory $InstallDirectory -File 'Autoconfig'
         }
     }
 }
